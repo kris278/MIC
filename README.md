@@ -28,7 +28,7 @@ python main.py memory.dmp
 ```
 ## Dataset
 
-The dataset contains personal information, so only Experiment #1 and Experiment #2 are uploaded. You can download them from the links below:
+The dataset contains personal information, so only `Experiment #1` and `Experiment #2` are uploaded. You can download them from the links below:
 
 - [Experiment #1](https://www.dropbox.com/scl/fi/2v63607njm82j263ervab/Chrome-Normal-Records.dmp?rlkey=u94qxo5763yj5tvmhtg96okkc&st=3mgnk4at&dl=0) 
 - [Experiment #2](https://www.dropbox.com/scl/fi/3waij5oe5yb7yb5ggo805/Chrome-Modified-Records.dmp?rlkey=oetqv9tkscu8tc4lrsvthl0d3&st=5wwlt0ad&dl=0)
