@@ -16,7 +16,7 @@ class DATA_TYPE(enum.Enum):
     LevelDBData = 2
 
 def check_table_exists(db_path, table_name):
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect('results/'+db_path)
     cursor = conn.cursor()
 
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
@@ -30,7 +30,7 @@ def check_table_exists(db_path, table_name):
 
 def create_table(database_name, table_name, type:TABLE_TYPE):
     try:
-        conn = sqlite3.connect(database_name)
+        conn = sqlite3.connect('results/'+database_name)
         cursor = conn.cursor()
 
         if type == TABLE_TYPE.Metadata:
@@ -72,13 +72,13 @@ def create_table(database_name, table_name, type:TABLE_TYPE):
 def insert_records(database_name, records, type:DATA_TYPE):
     try:
         if type == DATA_TYPE.Metadata:
-            conn = sqlite3.connect(database_name)
+            conn = sqlite3.connect('results/'+database_name)
             cursor = conn.cursor()
             cursor.executemany("INSERT INTO Metadata (database_id, database, object_store_id, object_store) VALUES (?, ?, ?, ?)", records)
             conn.commit()
             conn.close()
         elif type == DATA_TYPE.IndexedDBData:
-            conn = sqlite3.connect(database_name)
+            conn = sqlite3.connect('results/'+database_name)
             cursor = conn.cursor()
 
             cursor.execute('SELECT database_id, object_store_id, database, object_store FROM Metadata')
@@ -108,7 +108,7 @@ def insert_records(database_name, records, type:DATA_TYPE):
             conn.commit()
             conn.close()
         elif type == DATA_TYPE.LevelDBData:
-            conn = sqlite3.connect(database_name)
+            conn = sqlite3.connect('results/'+database_name)
             cursor = conn.cursor()
             for record in records:
                 try:

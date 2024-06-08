@@ -53,14 +53,15 @@ def main():
     _quiet_mode = getattr(args, 'quiet', False)
 
     if not _log_file:
+        os.mkdir('results')
         local_date_time = datetime.datetime.now()
         _log_file = (
-                '{0:s}-{1:04d}{2:02d}{3:02d}T{4:02d}{5:02d}{6:02d}.log.gz').format(
+                'results/{0:s}-{1:04d}{2:02d}{3:02d}T{4:02d}{5:02d}{6:02d}.log.gz').format(
                 NAME, local_date_time.year, local_date_time.month,
                 local_date_time.day, local_date_time.hour, local_date_time.minute,
                 local_date_time.second)
         _out_file = (
-                '{0:s}-{1:04d}{2:02d}{3:02d}T{4:02d}{5:02d}{6:02d}.output.json').format(
+                'results/{0:s}-{1:04d}{2:02d}{3:02d}T{4:02d}{5:02d}{6:02d}.output.json').format(
                 os.path.split(args.memory_dump_file)[1], local_date_time.year, local_date_time.month,
                 local_date_time.day, local_date_time.hour, local_date_time.minute,
                 local_date_time.second)
